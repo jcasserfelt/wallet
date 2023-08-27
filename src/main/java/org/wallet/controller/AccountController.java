@@ -1,7 +1,5 @@
 package org.wallet.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,12 +15,10 @@ import java.util.Optional;
 @RequestMapping("/v1/accounts")
 public class AccountController {
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
-    @Autowired
-    AccountController(@Lazy AccountService accountService) {this.accountService = accountService;}
-
-    public AccountController() {
+    AccountController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @GetMapping
